@@ -711,7 +711,7 @@ currentVideoId = data.videoId;
     socket.on('sync-state', (data) => {
       if (currentVideoId === data.videoId) {
         const timeDiff = Math.abs(player.getCurrentTime() - data.time);
-        if (timeDiff > 0.5) {
+        if (timeDiff > 0.3) {
           player.seekTo(data.time, true);
         }
         if (data.state === 'playing') {
@@ -797,7 +797,7 @@ currentVideoId = data.videoId;
             videoId: item.id.videoId,
             title: item.snippet.title,
             channel: item.snippet.channelTitle,
-            startAt: Date.now() + 500
+            startAt: Date.now() + 1000
           });
         });
         searchResults.appendChild(songItem);
@@ -911,4 +911,5 @@ currentVideoId = data.videoId;
 </body>
 
 </html>
+
 
