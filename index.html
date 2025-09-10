@@ -687,7 +687,7 @@
     socket.on('play-song', (data) => {
 currentVideoId = data.videoId;
     // Preload video in paused state
-    player.loadVideoById(data.videoId);
+    player.cueVideoById(data.videoId);
     document.getElementById('nowPlayingTitle').textContent = data.title;
     document.getElementById('nowPlayingArtist').textContent = data.channel;
 
@@ -796,7 +796,8 @@ currentVideoId = data.videoId;
             room: socket.room,
             videoId: item.id.videoId,
             title: item.snippet.title,
-            channel: item.snippet.channelTitle
+            channel: item.snippet.channelTitle,
+            startAt: Date.now() + 500
           });
         });
         searchResults.appendChild(songItem);
@@ -910,3 +911,4 @@ currentVideoId = data.videoId;
 </body>
 
 </html>
+
