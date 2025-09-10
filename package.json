@@ -4,4 +4,7 @@
     "git": "^0.1.5",
     "socket.io": "^4.8.1"
   }
+  "scripts": {
+  "start": "node server.js"
+}
 }
