@@ -686,7 +686,6 @@
 
     socket.on('play-song', (data) => {
 currentVideoId = data.videoId;
-  if (!isMaster) {
     // Preload video in paused state
     player.loadVideoById(data.videoId);
     document.getElementById('nowPlayingTitle').textContent = data.title;
@@ -707,10 +706,10 @@ currentVideoId = data.videoId;
       player.playVideo();
     }
   }
-});
+);
 
     socket.on('sync-state', (data) => {
-      if (!isMaster && currentVideoId === data.videoId) {
+      if (currentVideoId === data.videoId) {
         const timeDiff = Math.abs(player.getCurrentTime() - data.time);
         if (timeDiff > 0.5) {
           player.seekTo(data.time, true);
@@ -909,4 +908,5 @@ currentVideoId = data.videoId;
 
 </script>
 </body>
+
 </html>
